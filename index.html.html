@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MQTTConect</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Orbitron -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Suaviza a rolagem ao clicar nos links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Personaliza a barra de rolagem (sem arredondamento e cinza quase transparente) */
+        ::-webkit-scrollbar {
+            width: 15px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(100, 100, 100, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(150, 150, 150, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(180, 180, 180, 0.4);
+        }
+
+        /* Aplica a fonte tecnológica ao Navbar */
+        .navbar-text {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Estiliza o link ativo na navbar */
+        .nav-active {
+            color: #80baf0;
+            font-weight: bold;
+        }
+
+        /* Linha de progresso fixa na parte inferior */
+        .progress-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #0a1f44, #1c3d5a); /* Azul escuro */
+            transition: width 0.1s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-transparent backdrop-blur-md z-10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold navbar-text">MQTTConnect</a>
+            <ul class="hidden md:flex space-x-6 text-white navbar-text" id="nav-menu">
+                <li><a href="#sobre" class="hover:text-blue-400" data-section="sobre">Sobre</a></li>
+                <li><a href="#planos" class="hover:text-blue-400" data-section="planos">Planos</a></li>
+                <li><a href="#clientes" class="hover:text-blue-400" data-section="clientes">Clientes</a></li>
+                <li><a href="#contato" class="hover:text-blue-400" data-section="contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Seções -->
+<section id="home" class="h-screen flex flex-col justify-center items-center bg-gray-800 px-6">
+    <h1 class="text-4xl font-bold navbar-text text-center">Bem-vindo à MQTTConnect</h1>
+    <h2 class="text-xl font-semibold text-blue-300 mt-2 text-center">Conectando Dispositivos com Eficiência e Segurança</h2>
+    
+    <p class="text-lg mt-6 text-justify max-w-3xl leading-relaxed">
+        A <strong>MQTTConnect</strong> nasceu da necessidade crescente de conectar dispositivos IoT de forma <strong>rápida, confiável e segura</strong>. 
+        Somos especializados em <strong>serviços de broker MQTT</strong>, proporcionando soluções escaláveis para empresas, desenvolvedores e integradores de sistemas que precisam de uma infraestrutura robusta para comunicação entre dispositivos.
+    </p>
+
+    <p class="text-lg mt-4 text-justify max-w-3xl leading-relaxed">
+        Nosso foco é oferecer um <strong>ambiente de comunicação otimizado</strong>, garantindo <strong>baixa latência, alta disponibilidade e segurança avançada</strong> para aplicações <strong>IoT, automação industrial, telemetria, smart homes</strong> e muito mais.
+    </p>
+</section>
+
+
+<section id="sobre" class="h-screen flex flex-col md:flex-row items-center justify-center bg-gray-800 px-6">
+    <!-- Área de Texto -->
+    <div class="md:w-1/2 text-white">
+        <h1 class="text-4xl font-bold navbar-text">🚀 O que oferecemos?</h1>
+        <ul class="mt-6 space-y-3 text-lg">
+            <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> <strong>Infraestrutura de Broker MQTT</strong> – Rápida, segura e escalável</li>
+            <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> <strong>Suporte Técnico Especializado</strong> – Para garantir que sua conexão nunca pare</li>
+            <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> <strong>Alta Disponibilidade</strong> – 99,9% de uptime para que seus dispositivos estejam sempre conectados</li>
+            <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> <strong>Protocolos de Segurança</strong> – Autenticação TLS, criptografia e controle de acesso avançado</li>
+            <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> <strong>Monitoramento e Analytics</strong> – Para otimizar o tráfego de dados da sua aplicação</li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-blue-300 mt-8">🌍 Para quem é a MQTTConnect?</h2>
+        <ul class="mt-4 space-y-2 text-lg">
+            <li class="flex items-center"><span class="text-blue-400 mr-2">🔹</span> <strong>Empresas e startups</strong> que precisam de uma solução robusta para IoT</li>
+            <li class="flex items-center"><span class="text-blue-400 mr-2">🔹</span> <strong>Desenvolvedores</strong> que querem testar e implementar soluções MQTT rapidamente</li>
+            <li class="flex items-center"><span class="text-blue-400 mr-2">🔹</span> <strong>Automação industrial e residencial</strong> buscando eficiência na comunicação de dispositivos</li>
+            <li class="flex items-center"><span class="text-blue-400 mr-2">🔹</span> <strong>Integradores de sistemas</strong> que precisam de uma conexão estável e escalável</li>
+        </ul>
+
+        <p class="text-lg mt-6 leading-relaxed">
+            Acreditamos que <strong class="text-blue-300">a conectividade é a base para a inovação</strong> e estamos aqui para garantir que seus dispositivos 
+            <strong class="text-blue-300">conversem entre si de forma eficiente, confiável e segura</strong>.
+        </p>
+
+        <p class="text-xl mt-6 text-blue-400 font-bold">
+            💡 Precisa de um broker MQTT confiável? <a href="#contato" class="underline hover:text-blue-300">Fale com a gente!</a>
+        </p>
+    </div>
+
+    <!-- Área da Imagem -->
+    <div class="md:w-1/2 flex justify-center mt-8 md:mt-0">
+        <img src="./mqtt.png" alt="Ilustração MQTT" class="w-full max-w-md rounded-lg shadow-lg">
+    </div>
+</section>
+
+
+ 
+
+
+<section id="planos" class="h-screen flex flex-col justify-center items-center bg-gray-900 px-6">
+    <h1 class="text-4xl font-bold navbar-text text-center text-white">Escolha seu Plano</h1>
+    <p class="text-lg mt-2 text-center text-gray-300 max-w-2xl">
+        Escolha o plano ideal para sua aplicação MQTT e tenha conectividade segura e eficiente.
+    </p>
+
+    <div class="mt-8 flex flex-col md:flex-row gap-6">
+        <!-- Card Plano Básico -->
+        <div class="bg-gray-800 text-white p-6 rounded-lg shadow-lg w-80 border border-gray-700">
+            <h2 class="text-2xl font-bold text-blue-300 text-center">Plano Básico</h2>
+            <p class="text-lg mt-2 text-gray-300 text-center">Ideal para pequenos projetos e desenvolvedores</p>
+            <p class="text-3xl font-bold mt-4 text-center">R$ 29,90/mês</p>
+            <ul class="mt-4 space-y-2 text-gray-300 text-left">
+                <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> 10 dispositivos conectados</li>
+                <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> 100.000 mensagens/mês</li>
+                <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> Suporte via e-mail</li>
+                <li class="flex items-center"><span class="text-red-400 mr-2">❌</span> Sem suporte 24/7</li>
+            </ul>
+            <button class="mt-6 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg w-full transition">
+                Assinar Agora
+            </button>
+        </div>
+
+        <!-- Card Plano Avançado -->
+        <div class="bg-gray-800 text-white p-6 rounded-lg shadow-lg w-80 border border-blue-500">
+            <h2 class="text-2xl font-bold text-blue-400 text-center">Plano Avançado</h2>
+            <p class="text-lg mt-2 text-gray-300 text-center">Para empresas e projetos escaláveis</p>
+            <p class="text-3xl font-bold mt-4 text-center">R$ 79,90/mês</p>
+            <ul class="mt-4 space-y-2 text-gray-300 text-left">
+                <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> 100 dispositivos conectados</li>
+                <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> 1.000.000 mensagens/mês</li>
+                <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> Suporte 24/7</li>
+                <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> Segurança TLS e criptografia</li>
+            </ul>
+            <button class="mt-6 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg w-full transition">
+                Assinar Agora
+            </button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+    <section id="clientes" class="h-screen flex flex-col justify-center items-center bg-gray-500">
+        <h1 class="text-4xl font-bold navbar-text">Clientes</h1>
+        <p class="text-lg mt-4 text-center max-w-2xl">
+            Veja o que nossos clientes dizem sobre nós!
+        </p>
+    </section>
+
+    <section id="contato" class="h-screen flex flex-col justify-center items-center bg-gray-600">
+        <h1 class="text-4xl font-bold navbar-text">Contato</h1>
+        <p class="text-lg mt-4 text-center max-w-2xl">
+            Entre em contato com a gente!
+        </p>
+    </section>
+
+    <!-- Linha de progresso fixa na parte inferior -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- Script para destacar o menu ativo e atualizar a barra de progresso -->
+    <script>
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll("#nav-menu a");
+        const progressBar = document.getElementById("progress-bar");
+
+        function highlightNav() {
+            let scrollPosition = window.scrollY;
+            let windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrollPercent = (scrollPosition / windowHeight) * 100;
+            progressBar.style.width = scrollPercent + "%";
+
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop - 80;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute("id");
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    navLinks.forEach((link) => {
+                        link.classList.remove("nav-active");
+                        if (link.getAttribute("href") === `#${sectionId}`) {
+                            link.classList.add("nav-active");
+                        }
+                    });
+                }
+            });
+        }
+
+        window.addEventListener("scroll", highlightNav);
+    </script>
+
+</body>
+</html>
