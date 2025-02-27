@@ -172,21 +172,39 @@
     </div>
 
     <!-- Scripts -->
-    <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+ <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-        const progressBar = document.getElementById("progress-bar");
-        window.addEventListener("scroll", () => {
-            let scrollPosition = window.scrollY;
-            let windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrollPercent = (scrollPosition / windowHeight) * 100;
-            progressBar.style.width = scrollPercent + "%";
+    // Alternar o menu ao clicar no botão
+    menuToggle.addEventListener('click', (event) => {
+        event.stopPropagation(); // Evita fechar imediatamente ao clicar no botão
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Fechar o menu ao clicar fora dele
+    document.addEventListener('click', (event) => {
+        if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && event.target !== menuToggle) {
+            mobileMenu.classList.add('hidden');
+        }
+    });
+
+    // Fechar o menu ao clicar em um link dentro dele
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
         });
-    </script>
+    });
+
+    // Fechar o menu ao detectar qualquer tentativa de arraste
+    document.addEventListener('touchmove', () => {
+        if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+        }
+    });
+</script>
+
+
 
 </body>
 </html>
