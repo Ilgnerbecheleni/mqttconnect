@@ -106,15 +106,49 @@
 <section id="planos" class="h-screen flex flex-col items-center justify-center bg-gray-900 px-6">
     <h1 class="text-2xl sm:text-3xl font-bold navbar-text text-white">Escolha seu Plano</h1>
     <div class="mt-8 flex flex-col md:flex-row gap-6">
-        <!-- Card Básico -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-80 text-left">
+        
+        <!-- Card Plano Básico -->
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-80 text-left border border-gray-700">
             <h2 class="text-lg sm:text-xl font-bold text-blue-300">Plano Básico</h2>
             <p class="text-sm sm:text-base mt-2 text-gray-300">Ideal para pequenos projetos</p>
             <p class="text-xl sm:text-2xl font-bold mt-4">R$ 29,90/mês</p>
+            
+            <!-- Benefícios do plano -->
+            <ul class="mt-4 space-y-2 text-gray-300 text-left">
+                <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> 10 dispositivos conectados</li>
+                <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> 100.000 mensagens/mês</li>
+                <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> Suporte via e-mail</li>
+                <li class="flex items-center"><span class="text-red-400 mr-2">❌</span> Sem suporte 24/7</li>
+                <li class="flex items-center"><span class="text-red-400 mr-2">❌</span> Sem segurança avançada TLS</li>
+            </ul>
+
             <button class="mt-6 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg w-full transition">
                 Assinar Agora
             </button>
         </div>
+
+        <!-- Card Plano Avançado -->
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-80 text-left border border-blue-500">
+            <h2 class="text-lg sm:text-xl font-bold text-blue-400">Plano Avançado</h2>
+            <p class="text-sm sm:text-base mt-2 text-gray-300">Para projetos escaláveis</p>
+            <p class="text-xl sm:text-2xl font-bold mt-4">R$ 79,90/mês</p>
+            
+            <!-- Benefícios do plano -->
+            <ul class="mt-4 space-y-2 text-gray-300 text-left">
+                <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> 100 dispositivos conectados</li>
+                <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> 1.000.000 mensagens/mês</li>
+                <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> Suporte 24/7</li>
+                <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> Segurança TLS e criptografia</li>
+                <li class="flex items-center"><span class="text-green-400 mr-2">✅</span> Monitoramento e analytics avançados</li>
+            </ul>
+
+            <button class="mt-6 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg w-full transition">
+                Assinar Agora
+            </button>
+        </div>
+    </div>
+</section>
+
 
         <!-- Card Avançado -->
         <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-80 text-left">
